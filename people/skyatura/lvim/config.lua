@@ -28,6 +28,34 @@ table.insert(lvim.plugins, {
 })
 
 table.insert(lvim.plugins, {
+  "chrisgrieser/nvim-various-textobjs",
+  opts = { useDefaultKeymaps = true },
+})
+
+table.insert(lvim.plugins, {
+  "chrisgrieser/nvim-spider",
+  init = function()
+    vim.keymap.set({ "n", "o", "x" }, "ew", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
+    vim.keymap.set({ "n", "o", "x" }, "ee", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
+    vim.keymap.set({ "n", "o", "x" }, "eb", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
+    vim.keymap.set({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
+  end,
+  opts = {
+    skipInsignificantPunctuation = false,
+  },
+})
+
+table.insert(lvim.plugins, {
+  'rmagatti/auto-session',
+  config = function()
+    require("auto-session").setup {
+      log_level = "error",
+      auto_session_suppress_dirs = { "~/", "~/projects", "~/Downloads", "/" },
+    }
+  end,
+})
+
+table.insert(lvim.plugins, {
   "ggandor/leap.nvim",
   name = "leap",
   config = function()
@@ -237,6 +265,28 @@ table.insert(lvim.plugins, { "tpope/vim-repeat" })
 table.insert(lvim.plugins, { "tpope/vim-surround" })
 
 table.insert(lvim.plugins, { "wakatime/vim-wakatime" })
+
+table.insert(lvim.plugins, {
+  "cbochs/portal.nvim",
+  -- Optional dependencies
+  dependencies = {
+    "cbochs/grapple.nvim",
+    "ThePrimeagen/harpoon"
+  },
+})
+lvim.builtin.which_key.mappings["\\"]["p"] = {
+  name = "Portal",
+  p = { "<cmd>Portal jumplist backward<cr>", "Jumplist backward" },
+  P = { "<cmd>Portal jumplist forward<cr>", "Jumplist forward" },
+  c = { "<cmd>Portal changelist backward<cr>", "Changelist backward" },
+  C = { "<cmd>Portal changelist forward<cr>", "Changelist forward" },
+  q = { "<cmd>Portal quickfix backward<cr>", "Quickfix backward" },
+  Q = { "<cmd>Portal quickfix forward<cr>", "Quickfix forward" },
+  h = { "<cmd>Portal harpoon backward<cr>", "Harpoon backward" },
+  H = { "<cmd>Portal harpoon forward<cr>", "Harpoon forward" },
+  g = { "<cmd>Portal grapple backward<cr>", "Grapple backward" },
+  G = { "<cmd>Portal grapple forward<cr>", "Grapple forward" },
+}
 
 table.insert(lvim.plugins, {
   "thibthib18/mongo-nvim",
