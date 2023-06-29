@@ -1,0 +1,15 @@
+{
+  "eslint.run": "onSave",
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "eslint.onIgnoredFiles": "off",
+  "eslint.codeActionsOnSave.mode": "all",
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "eslint.codeAction.disableRuleComment": {
+    "commentStyle": "line",
+    "enable": true,
+    "location": "separateLine"
+  }
+}

@@ -1,0 +1,17 @@
+layout fat
+enabled_layouts fat,stack
+
+new_tab DotSky
+cd ~/dotsky
+launch zsh
+
+new_tab Me
+cd ~
+launch zsh
+
+new_tab WHUS
+cd ~/projects/gitlab/emiolo/whus/whus
+launch zsh
+launch zsh
+launch zsh
+launch zsh

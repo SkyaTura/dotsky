@@ -6,6 +6,7 @@
 lvim.builtin.which_key.mappings["\\"] = {
   name = "Deeper leader",
 }
+lvim.builtin.which_key.mappings["\\"]["\\"] = { "<cmd>w<cr>", "Save file" }
 
 table.insert(lvim.plugins, {
   "windwp/nvim-spectre",
@@ -28,6 +29,13 @@ table.insert(lvim.plugins, {
 })
 
 table.insert(lvim.plugins, {
+  "RishabhRD/nvim-cheat.sh",
+  dependencies = { "RishabhRD/popfix" },
+})
+
+table.insert(lvim.plugins, { "danilamihailov/vim-tips-wiki" })
+
+table.insert(lvim.plugins, {
   "chrisgrieser/nvim-various-textobjs",
   opts = { useDefaultKeymaps = true },
 })
@@ -35,7 +43,7 @@ table.insert(lvim.plugins, {
 table.insert(lvim.plugins, {
   "chrisgrieser/nvim-spider",
   init = function()
-    vim.keymap.set({ "n", "o", "x" }, "ew", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
+    vim.keymap.set({ "n", "o", "x" }, "ew", "<>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
     vim.keymap.set({ "n", "o", "x" }, "ee", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
     vim.keymap.set({ "n", "o", "x" }, "eb", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
     vim.keymap.set({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
@@ -45,15 +53,15 @@ table.insert(lvim.plugins, {
   },
 })
 
-table.insert(lvim.plugins, {
-  'rmagatti/auto-session',
-  config = function()
-    require("auto-session").setup {
-      log_level = "error",
-      auto_session_suppress_dirs = { "~/", "~/projects", "~/Downloads", "/" },
-    }
-  end,
-})
+-- table.insert(lvim.plugins, {
+--   'rmagatti/auto-session',
+--   config = function()
+--     require("auto-session").setup {
+--       log_level = "error",
+--       auto_session_suppress_dirs = { "~/", "~/projects", "~/Downloads", "/" },
+--     }
+--   end,
+-- })
 
 table.insert(lvim.plugins, {
   "ggandor/leap.nvim",
@@ -226,6 +234,14 @@ table.insert(lvim.plugins, {
 })
 
 table.insert(lvim.plugins, {
+  "ahmedkhalf/lsp-rooter.nvim",
+  event = "BufRead",
+  config = function()
+    require("lsp-rooter").setup()
+  end,
+})
+
+table.insert(lvim.plugins, {
   "ray-x/lsp_signature.nvim",
   event = "BufRead",
   config = function() require "lsp_signature".on_attach() end,
@@ -237,6 +253,7 @@ table.insert(lvim.plugins, {
     require('symbols-outline').setup()
   end
 })
+lvim.builtin.which_key.mappings["S"] = { "<cmd>SymbolsOutline<CR>", "Toggle SymbolsOutline" }
 
 table.insert(lvim.plugins, {
   "folke/trouble.nvim",
@@ -250,6 +267,7 @@ lvim.builtin.which_key.mappings["t"] = {
   q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
   l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
   r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
+  n = lvim.builtin.which_key.mappings["l"]["j"],
 }
 
 table.insert(lvim.plugins, {
@@ -261,6 +279,9 @@ table.insert(lvim.plugins, {
 })
 
 table.insert(lvim.plugins, { "tpope/vim-repeat" })
+
+table.insert(lvim.plugins, { "jbyuki/instant.nvim" })
+vim.g.instant_username = "skya"
 
 table.insert(lvim.plugins, { "tpope/vim-surround" })
 
@@ -346,7 +367,6 @@ lvim.builtin.telescope.on_config_done = function(telescope)
   pcall(telescope.load_extension, "gitmoji")
 end
 
-
 vim.opt.relativenumber = true -- relative line numbers
 vim.opt.clipboard = ""
 
@@ -356,3 +376,7 @@ lvim.format_on_save.enabled = true
 lvim.builtin.which_key.mappings["L"]["c"] = { "<cmd>vsplit ~/.config/lvim/config.lua<cr>", "Edit config.lua" }
 
 vim.opt.showcmd = true
+
+lvim.format_on_save.enabled = true
+
+require("rust")
