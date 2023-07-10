@@ -8,6 +8,8 @@ lvim.builtin.which_key.mappings["\\"] = {
 }
 lvim.builtin.which_key.mappings["\\"]["\\"] = { "<cmd>w<cr>", "Save file" }
 
+lvim.builtin.which_key.mappings["l"]["R"] = { "<cmd>LspRestart<cr>", "Restart" }
+
 table.insert(lvim.plugins, {
   "windwp/nvim-spectre",
   event = "BufRead",
@@ -40,18 +42,18 @@ table.insert(lvim.plugins, {
   opts = { useDefaultKeymaps = true },
 })
 
-table.insert(lvim.plugins, {
-  "chrisgrieser/nvim-spider",
-  init = function()
-    vim.keymap.set({ "n", "o", "x" }, "ew", "<>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
-    vim.keymap.set({ "n", "o", "x" }, "ee", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
-    vim.keymap.set({ "n", "o", "x" }, "eb", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
-    vim.keymap.set({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
-  end,
-  opts = {
-    skipInsignificantPunctuation = false,
-  },
-})
+-- table.insert(lvim.plugins, {
+--   "chrisgrieser/nvim-spider",
+--   init = function()
+--     vim.keymap.set({ "n", "o", "x" }, "ew", "<>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
+--     vim.keymap.set({ "n", "o", "x" }, "ee", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
+--     vim.keymap.set({ "n", "o", "x" }, "eb", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
+--     vim.keymap.set({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
+--   end,
+--   opts = {
+--     skipInsignificantPunctuation = false,
+--   },
+-- })
 
 -- table.insert(lvim.plugins, {
 --   'rmagatti/auto-session',
