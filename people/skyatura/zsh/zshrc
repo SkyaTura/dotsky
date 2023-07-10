@@ -313,7 +313,7 @@ function ptouch() {
   done
 }
 
-alias sb='bash -c ''cd ~/soundboard && afplay $(fzf)'''
+alias sb='bash -c ''cd ~/soundboard && afplay "$(fzf)"'''
 function sbd() {
   sb
   sbd
