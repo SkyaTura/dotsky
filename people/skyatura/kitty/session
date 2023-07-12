@@ -1,3 +1,4 @@
+os_window_state maximized
 layout fat
 enabled_layouts fat,stack
 
@@ -10,7 +11,7 @@ cd ~
 launch zsh
 
 new_tab WHUS
-cd ~/projects/gitlab/emiolo/whus/whus
+cd ~/projects/gitlab/emiolo/whus/rufus
 launch zsh
 launch zsh
 launch zsh

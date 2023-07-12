@@ -2,7 +2,45 @@
 -- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
---
+-- [[  _____ _____ _____ _____  ]],
+-- [[ || S ||| k ||| y ||| a || ]],
+-- [[ ||___|||___|||___|||___|| ]],
+-- [[ |/___\|/___\|/___\|/___\| ]],
+-- [[ || T ||| u ||| r ||| a || ]],
+-- [[ ||___|||___|||___|||___|| ]],
+-- [[ |/___\|/___\|/___\|/___\| ]],
+-- [[                           ]],
+
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  {
+    exe = "eslint_d",
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+  },
+}
+
+lvim.builtin.alpha.dashboard.section.header.val = {
+  [[  ______     __  __     __  __     ______     ]],
+  [[ /\  ___\   /\ \/ /    /\ \_\ \   /\  __ \    ]],
+  [[ \ \___  \  \ \  _"-.  \ \____ \  \ \  __ \   ]],
+  [[  \/\_____\  \ \_\ \_\  \/\_____\  \ \_\ \_\  ]],
+  [[   \/_____/   \/_/\/_/   \/_____/   \/_/\/_/  ]],
+  [[  ______     __  __     ______     ______     ]],
+  [[ /\__  _\   /\ \/\ \   /\  == \   /\  __ \    ]],
+  [[ \/_/\ \/   \ \ \_\ \  \ \  __<   \ \  __ \   ]],
+  [[    \ \_\    \ \_____\  \ \_\ \_\  \ \_\ \_\  ]],
+  [[     \/_/     \/_____/   \/_/ /_/   \/_/\/_/  ]],
+  [[                                              ]],
+}
+
+lvim.builtin.alpha.dashboard.section.footer.val = {
+  [[  ____ ____ ____ ____  ]],
+  [[ ||l |||v |||i |||m || ]],
+  [[ ||__|||__|||__|||__|| ]],
+  [[ |/__\|/__\|/__\|/__\| ]],
+  [[                       ]],
+}
+
 lvim.builtin.which_key.mappings["\\"] = {
   name = "Deeper leader",
 }
@@ -35,7 +73,7 @@ table.insert(lvim.plugins, {
   dependencies = { "RishabhRD/popfix" },
 })
 
-table.insert(lvim.plugins, { "danilamihailov/vim-tips-wiki" })
+-- table.insert(lvim.plugins, { "danilamihailov/vim-tips-wiki" })
 
 table.insert(lvim.plugins, {
   "chrisgrieser/nvim-various-textobjs",
@@ -311,21 +349,21 @@ lvim.builtin.which_key.mappings["\\"]["p"] = {
   G = { "<cmd>Portal grapple forward<cr>", "Grapple forward" },
 }
 
-table.insert(lvim.plugins, {
-  "thibthib18/mongo-nvim",
-  build = "luarocks install lua-mongo",
-  config = function()
-    require("mongo-nvim").setup({
-      connection_string = "mongodb://root:example@10.10.3.3:27060/?authSource=admin",
-    })
-  end
-})
-lvim.builtin.which_key.mappings["\\"]["m"] = {
-  name = "Mongo",
-  l = { "<cmd>lua require('mongo-nvim.telescope.pickers').database_picker()<cr>", "List available databases" },
-  c = { "<cmd>lua require('mongo-nvim.telescope.pickers').collection_picker('examples')<cr>", "List collections" },
-  d = { "<cmd>lua require('mongo-nvim.telescope.pickers').document_picker('examples', 'movies')<cr>", "List documents" },
-}
+-- table.insert(lvim.plugins, {
+--   "thibthib18/mongo-nvim",
+--   build = "luarocks install lua-mongo",
+--   config = function()
+--     require("mongo-nvim").setup({
+--       connection_string = "mongodb://root:example@10.10.3.3:27060/?authSource=admin",
+--     })
+--   end
+-- })
+-- lvim.builtin.which_key.mappings["\\"]["m"] = {
+--   name = "Mongo",
+--   l = { "<cmd>lua require('mongo-nvim.telescope.pickers').database_picker()<cr>", "List available databases" },
+--   c = { "<cmd>lua require('mongo-nvim.telescope.pickers').collection_picker('examples')<cr>", "List collections" },
+--   d = { "<cmd>lua require('mongo-nvim.telescope.pickers').document_picker('examples', 'movies')<cr>", "List documents" },
+-- }
 
 table.insert(lvim.plugins, {
   "rest-nvim/rest.nvim",
