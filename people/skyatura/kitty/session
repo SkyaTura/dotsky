@@ -2,12 +2,5 @@ os_window_state maximized
 layout fat
 enabled_layouts fat,stack
 
-new_tab DotSky
-cd ~/dotsky
-launch zsh
-
 new_tab SkyaTura
-cd ~
-launch zsh
-
-new_tab
+launch --hold zsh -c "neofetch"

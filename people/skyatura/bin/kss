@@ -1,14 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 function launch() {
-  kitty @ launch --hold --type=$3 --title=$2 --cwd="$1" zsh -i -c "$4; zsh"
+  kitty @ launch --hold --type=$3 --title=$2 --cwd="$1" zsh -c "$4"
 }
 
-case $1 in
-  whus)
-    launch "~/projects/gitlab/emiolo/whus/rufus" "WHUS" "tab" "lvim"
-    launch "~/projects/gitlab/emiolo/whus/rufus" "WHUS" "window" "npm run dev:api"
-    launch "~/projects/gitlab/emiolo/whus/rufus" "WHUS" "window" "npm run dev:pwa"
-   ;;
-  *) echo "Unknown environment" ;;
-esac
+function resize() {
+  kitty @ resize-window --axis vertical --increment $(kitty @ ls | jq ".[] | select(.is_active == true).tabs | .[] | select(.is_active == true).windows | .[] | $1 - select(.is_active == true).lines")
+}
+
+function focus() {
+  kitty @ focus-window --match "num:$1"
+}
+
+function prompt() {
+  local prompt_items=$2
+  if [ -z $1 ]; then
+    printf "%s\n" ${(P)${prompt_items[@]}} | fzf --reverse --prompt="Select a session > "
+  else
+    echo "$1"
+  fi
+}
+
