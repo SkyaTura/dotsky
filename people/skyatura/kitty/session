@@ -6,13 +6,8 @@ new_tab DotSky
 cd ~/dotsky
 launch zsh
 
-new_tab Me
+new_tab SkyaTura
 cd ~
 launch zsh
 
-new_tab WHUS
-cd ~/projects/gitlab/emiolo/whus/rufus
-launch zsh
-launch zsh
-launch zsh
-launch zsh
+new_tab

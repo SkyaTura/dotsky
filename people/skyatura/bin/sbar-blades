@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+function getWanIp() {
+  dig -4 +short myip.opendns.com @resolver1.opendns.com | tr -d '\n'
+}
+function getLanIps() {
+  ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}' 
+}
+function getIp() {
+  wan_ip=$(getWanIp)
+  lan_ip=$(getLanIps)
+
+  echo "$wan_ip\n$lan_ip"
+}
+
+function getBattery() {
+  pmset -g batt | awk -F '\t' 'NR==2 { print $2 }'
+}
+
+function copyIp() {
+  getWanIp | pbcopy
+}
+
+function me() {
+  echo "SkyaTura @ $(scutil --get LocalHostName)"
+}
+
+$1
