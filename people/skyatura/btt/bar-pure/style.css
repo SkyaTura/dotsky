@@ -1,0 +1,69 @@
+body {
+  background: black;
+  margin: 0px;
+  padding: 0px;
+  font-family: Fira Code Nerd Font, Fira Code, sans-serif;
+  font-size: 12px;
+}
+
+body::before {
+  content: '';
+  background: black;
+  background-image: url(./bg.png);
+  background-size: 100%;
+  background-position-y: -1px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 65%;
+  filter: contrast(105%);
+}
+
+#app {
+  color: white;
+  height: 100vh;
+  /* -webkit-backdrop-filter: brightness(0.5) saturate(1.25) contrast(1.089); */
+  /* -webkit-backdrop-filter: brightness(0.5) saturate(1.25) contrast(1.089); */
+}
+
+#toolbar {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+body:not(:hover) #toolbar {
+  opacity: 0.5;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  color: inherit;
+}
+
+.wing {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spacer {
+  flex: 1 1;
+}
+
+.wing-right {
+  flex-direction: row-reverse;
+}
+
+#ip {
+  font-size: 0.7em;
+  line-height: 0.95em;
+}

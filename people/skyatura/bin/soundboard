@@ -1,0 +1,12 @@
+#!/opt/homebrew/bin/zsh
+
+cd ~/soundboard
+
+file=$(fzf)
+
+echo $file
+if [[ $file = "" ]]; then
+  exit
+fi
+
+afplay "${file}"

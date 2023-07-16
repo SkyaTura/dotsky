@@ -1,0 +1,14 @@
+#!/bin/bash
+
+function launch() {
+  kitty @ launch --hold --type=$3 --title=$2 --cwd="$1" zsh -i -c "$4; zsh"
+}
+
+case $1 in
+  whus)
+    launch "~/projects/gitlab/emiolo/whus/rufus" "WHUS" "tab" "lvim"
+    launch "~/projects/gitlab/emiolo/whus/rufus" "WHUS" "window" "npm run dev:api"
+    launch "~/projects/gitlab/emiolo/whus/rufus" "WHUS" "window" "npm run dev:pwa"
+   ;;
+  *) echo "Unknown environment" ;;
+esac

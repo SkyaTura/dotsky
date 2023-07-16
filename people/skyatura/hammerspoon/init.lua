@@ -127,12 +127,12 @@ function showWindow(filter, index)
   if (window == nil) then return end
 
 
-  if (filter == wf_arc and aw_stored['Arc'] and aw_stored['Arc'] < 75 and aw_current_app ~= 'Arc') then
-    print('override')
-    aw_last = br.get()
-    br.set(aw_stored['Arc'])
-    sleep(0.5)
-  end
+  -- if (filter == wf_arc and aw_stored['Arc'] and aw_stored['Arc'] < 75 and aw_current_app ~= 'Arc') then
+  --   print('override')
+  --   aw_last = br.get()
+  --   br.set(aw_stored['Arc'])
+  --   sleep(0.5)
+  -- end
   window:focus()
 end
 

@@ -1,0 +1,10 @@
+new_tab WHUS
+
+layout fat
+enabled_layouts fat:bias=90;stack
+
+cd ~/projects/gitlab/emiolo/whus/rufus
+
+launch zsh
+launch zsh
+launch zsh
