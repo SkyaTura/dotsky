@@ -1,23 +1,3 @@
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-
-export HOMEBREW_PREFIX="/opt/homebrew";
-export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-export HOMEBREW_REPOSITORY="/opt/homebrew";
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
-export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use hyphen-insensitive completion.
@@ -35,11 +15,6 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -49,12 +24,14 @@ plugins=(
   aliases
   brew
   common-aliases
+  nvm
   git
   sudo
   z
 )
 
 source $ZSH/oh-my-zsh.sh
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 
 function docker_info() {
   result=''
@@ -65,21 +42,21 @@ function docker_info() {
   fi
   echo "🐳($result)"
 }
+function node_info() {
+  version=$(echo $NVM_BIN | awk -F '/' '{print $(NF -1)}')
+  echo "📦($version)"
+}
 NEWLINE=$'\n'
-PROMPT='${NEWLINE}$fg[green]%}$USER%{$fg[yellow]%}@%m  %{$fg[cyan]%}$(docker_info) $(git_prompt_info)${NEWLINE}'
-PROMPT+='%{$fg[cyan]%}%c %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%} '
+PROMPT='${NEWLINE}%B'
+PROMPT+='%F{#888}$(date "+%H:%M:%S")'
+PROMPT+=' %F{#0F0}$USER%F{#FF0}@%m'
+PROMPT+=' %F{#090}$(node_info)'
+PROMPT+=' %F{#0AA}$(docker_info)'
+PROMPT+=' $(git_prompt_info)'
+PROMPT+='${NEWLINE}$b'
+PROMPT+='%F{cyan}%c %B%(?:%F{green}➜ :%F{red}➜ )%b%f '
 
 # User configuration
-
-# You may need to manually set your language environment
-export LANG="pt_BR.UTF-8"
-export LC_COLLATE="pt_BR.UTF-8"
-export LC_CTYPE="pt_BR.UTF-8"
-export LC_MESSAGES="pt_BR.UTF-8"
-export LC_MONETARY="pt_BR.UTF-8"
-export LC_NUMERIC="pt_BR.UTF-8"
-export LC_TIME="pt_BR.UTF-8"
-export LC_ALL="pt_BR.UTF-8"
 
 export EDITOR='lvim'
 alias v="$EDITOR"
@@ -123,5 +100,5 @@ gac() {
 }
 
 mkdir -p ~/.local
-touch ~/.local/zshrc
+touch ~/.local/zshrc ~/.motd
 source ~/.local/zshrc
