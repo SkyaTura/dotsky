@@ -20,4 +20,3 @@ function prompt() {
     echo "$1"
   fi
 }
-
