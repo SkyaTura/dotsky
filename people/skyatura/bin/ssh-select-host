@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+items=$(cat ~/.ssh/config | grep "Host " | awk '{ print $2 }' | sort)
+printf "%s\n" ${items[@]} | fzf --reverse --prompt="Select a server > "

@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+host=$(ssh-select-host)
+
+if [[ -z $host ]]; then
+  exit
+fi
+
+kitty @ launch --type=tab --title=$host zsh -c "s $host"
+source ./ksession

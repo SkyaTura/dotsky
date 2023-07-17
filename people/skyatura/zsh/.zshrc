@@ -73,7 +73,6 @@ alias ohmyzsh="v ~/.oh-my-zsh"
 
 alias l="ls -lah"
 
-alias s="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
 
 alias ni='npm install'
@@ -92,6 +91,7 @@ alias nrd='npm run dev'
 alias nrb='npm run build'
 alias nrs='npm start'
 alias nrt='npm run test'
+alias dotsky='cd ~/dotsky/people/skyatura'
 
 gac() {
   git add $@
@@ -100,5 +100,5 @@ gac() {
 }
 
 mkdir -p ~/.local
-touch ~/.local/zshrc ~/.motd
-source ~/.local/zshrc
+touch ~/.local/.zshrc ~/.motd
+source ~/.local/.zshrc
