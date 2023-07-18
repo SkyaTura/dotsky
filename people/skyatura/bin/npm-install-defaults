@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+packages=(
+  gitmoji-cli
+  nx
+  yarn
+  npm-check-updates
+)
+
+npm install --global $packages

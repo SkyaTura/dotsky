@@ -2,51 +2,19 @@
 -- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
--- [[  _____ _____ _____ _____  ]],
--- [[ || S ||| k ||| y ||| a || ]],
--- [[ ||___|||___|||___|||___|| ]],
--- [[ |/___\|/___\|/___\|/___\| ]],
--- [[ || T ||| u ||| r ||| a || ]],
--- [[ ||___|||___|||___|||___|| ]],
--- [[ |/___\|/___\|/___\|/___\| ]],
--- [[                           ]],
 
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-  {
-    exe = "eslint_d",
-    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
-  },
-}
+require('aesthetics')   -- Dashboard, NeoTree
+require('lsp-settings') -- Eslint, Diagnostics
 
-lvim.builtin.alpha.dashboard.section.header.val = {
-  [[  ______     __  __     __  __     ______        ]],
-  [[ /\  ___\   /\ \/ /    /\ \_\ \   /\  __ \       ]],
-  [[ \ \___  \  \ \  _"-.  \ \____ \  \ \  __ \      ]],
-  [[  \/\_____\  \ \_\ \_\  \/\_____\  \ \_\ \_\     ]],
-  [[   \/_____/   \/_/\/_/   \/_____/   \/_/\/_/     ]],
-  [[       ______    __  __     ______     ______    ]],
-  [[      /\__  _\  /\ \/\ \   /\  == \   /\  __ \   ]],
-  [[      \/_/\ \/  \ \ \_\ \  \ \  __<   \ \  __ \  ]],
-  [[         \ \_\   \ \_____\  \ \_\ \_\  \ \_\ \_\ ]],
-  [[          \/_/    \/_____/   \/_/ /_/   \/_/\/_/ ]],
-  [[                                                 ]],
-}
 
-lvim.builtin.alpha.dashboard.section.footer.val = {
-  [[  ____ ____ ____ ____  ]],
-  [[ ||l |||v |||i |||m || ]],
-  [[ ||__|||__|||__|||__|| ]],
-  [[ |/__\|/__\|/__\|/__\| ]],
-  [[                       ]],
-}
+-- LSP Settings
 
 lvim.builtin.which_key.mappings["\\"] = {
   name = "Deeper leader",
 }
 lvim.builtin.which_key.mappings["\\"]["\\"] = { "<cmd>w<cr>", "Save file" }
 
-lvim.builtin.which_key.mappings["l"]["R"] = { "<cmd>LspRestart<cr>", "Restart" }
+
 
 table.insert(lvim.plugins, {
   "windwp/nvim-spectre",
@@ -148,47 +116,6 @@ table.insert(lvim.plugins, {
     })
   end,
 })
-
-table.insert(lvim.plugins, {
-  "nvim-neo-tree/neo-tree.nvim",
-  branch = "v2.x",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "MunifTanjim/nui.nvim",
-  },
-  config = function()
-    require("neo-tree").setup({
-      close_if_last_window = true,
-      respect_gitignore = true,
-      window = {
-        width = 30,
-      },
-      buffers = {
-        follow_current_file = true,
-      },
-      filesystem = {
-        follow_current_file = true,
-        filtered_items = {
-          hide_dotfiles = false,
-          hide_gitignored = false,
-          hide_by_name = {
-            "node_modules"
-          },
-          never_show = {
-            ".DS_Store",
-            "thumbs.db"
-          },
-        },
-      },
-    })
-  end
-})
-lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
-
-lvim.builtin.which_key.mappings["g"]["e"] = { "<cmd>NeoTreeFloat git_status<CR>", "List changes" }
-lvim.builtin.which_key.mappings["g"]["m"] = { "<cmd>Telescope gitmoji<CR>", "Commit with gitmoji" }
-lvim.builtin.which_key.mappings["e"] = { "<cmd>NeoTreeRevealToggle<CR>", "Toggle NeoTree" }
 
 
 --table.insert(lvim.plugins, {
@@ -294,21 +221,6 @@ table.insert(lvim.plugins, {
   end
 })
 lvim.builtin.which_key.mappings["S"] = { "<cmd>SymbolsOutline<CR>", "Toggle SymbolsOutline" }
-
-table.insert(lvim.plugins, {
-  "folke/trouble.nvim",
-  cmd = "TroubleToggle",
-})
-lvim.builtin.which_key.mappings["t"] = {
-  name = "Diagnostics",
-  t = { "<cmd>TroubleToggle<cr>", "trouble" },
-  w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace" },
-  d = { "<cmd>TroubleToggle document_diagnostics<cr>", "document" },
-  q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
-  l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
-  r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
-  n = lvim.builtin.which_key.mappings["l"]["j"],
-}
 
 table.insert(lvim.plugins, {
   "folke/todo-comments.nvim",
@@ -420,3 +332,6 @@ vim.opt.showcmd = true
 lvim.format_on_save.enabled = true
 
 require("rust")
+
+lvim.builtin.which_key.mappings["H"] = { "iospijadoipsjfioasdjfo asopidfjasodifjoi\nhello Mundo0ciwFookf x~0~ysiw[",
+  "Edit config.lua" }
