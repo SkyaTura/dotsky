@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+mkdir -p ~/.k_sessions
+cd ~/.k_sessions
+
 function setTabTitle() {
   kitty @ set-tab-title --match "$1" $2
 }
@@ -18,11 +21,16 @@ function focus() {
   kitty @ focus-window --match "num:$1"
 }
 
-function prompt() {
-  local prompt_items=$2
-  if [ -z $1 ]; then
-    printf "%s\n" ${(P)${prompt_items[@]}} | fzf --reverse --prompt="Select a session > "
+session=$(fzf --reverse --prompt="Select a session > ")
+
+if [[ -f "$session" ]]; then
+  source "$session"
+else
+  echo "Input a one-time run command: "
+  read input
+  if [[ "$input" == "" ]]; then
+    echo "Cancelled"
   else
-    echo "$1"
+    zsh -i -c "$input"
   fi
-}
+fi
