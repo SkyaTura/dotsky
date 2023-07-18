@@ -28,7 +28,7 @@ Ok, but if my leader key is `\`, what ESC has to do with that? Having the consta
 
 ### TL;DR
 
-I use `^[` instead of dedicated `<esc>` key which maked `\` a confortable alternative for leader key.
+I use `^[` instead of dedicated `<esc>` key which made `\` a confortable alternative for leader key.
 
 ## Keybindings override
 
