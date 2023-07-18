@@ -26,7 +26,5 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
-# Soft loading nvm (interactive version is set on .zshrc)
-export NODE_DEFAULT_VERSION="v18.16.1"
-export NVM_DIR="$HOME/.nvm"
-export PATH="$NVM_DIR/versions/node/$NODE_DEFAULT_VERSION/bin:$PATH"
+# Load fnm
+eval "$(fnm env --use-on-cd)"

@@ -24,14 +24,12 @@ plugins=(
   aliases
   brew
   common-aliases
-  nvm
   git
   sudo
   z
 )
 
 source $ZSH/oh-my-zsh.sh
-# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 
 function docker_info() {
   result=''
@@ -40,18 +38,21 @@ function docker_info() {
   else
     result='local'
   fi
-  echo "🐳($result)"
+  echo " 🐳($result)"
 }
 function node_info() {
-  version=$(echo $NVM_BIN | awk -F '/' '{print $(NF -1)}')
-  echo "📦($version)"
+  version=$(node -v)
+  if [[ "$version" == "" ]]; then
+    return
+  fi
+  echo " 📦($version)"
 }
 NEWLINE=$'\n'
 PROMPT='${NEWLINE}%B'
 PROMPT+='%F{#888}$(date "+%H:%M:%S")'
 PROMPT+=' %F{#0F0}$USER%F{#FF0}@%m'
-PROMPT+=' %F{#090}$(node_info)'
-PROMPT+=' %F{#0AA}$(docker_info)'
+PROMPT+='%F{#090}$(node_info)'
+PROMPT+='%F{#0AA}$(docker_info)'
 PROMPT+=' $(git_prompt_info)'
 PROMPT+='${NEWLINE}$b'
 PROMPT+='%F{cyan}%c %B%(?:%F{green}➜ :%F{red}➜ )%b%f '

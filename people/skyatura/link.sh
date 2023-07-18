@@ -7,31 +7,32 @@ cd "$HOME"
 function link() {
   source="$DOTSKY/$1" 
   target="$HOME/$2" 
-  if [[ -f "$target" ]]; then
-    ln -s "$source" "$target" && echo "$source -> $target linked"
+  if [[ -f "$target" || -d "$target" ]]; then
+    print -P "%F{green}$source -> $target already linked%f"
   else
-    echo "$DOTSKY/$1 already linked"
+    ln -s "$source" "$target" && print -P "%F{yellow}$source -> $target linked%f"
   fi
 }
 
 function linkw() {
-  source="$DOTSKY/$1"
-  target="$HOME/$2" 
-  ln -s "$source"/* "$target" && echo "$source -> $target linked"
+  for file in $(cd "$DOTSKY" && find $@ -type f); do
+    link "$file" ".local/bin/$(basename $file)"
+  done
 }
 
 mkdir -p .local/bin .config
 
-link zsh/.zshrc
-link zsh/.zshenv
-link zsh/.zshprofile
-link local/zsh/.zshrc .local/
+link "zsh/.zshrc" ".zshrc"
+link "zsh/.zshenv" ".zshenv"
+link "zsh/.zprofile" ".zprofile"
+link "local/zsh/.zshrc" ".local/.zshrc"
 
-linkw bin .local/bin/
-linkw local/bin .local/bin/
+linkw "bin" "local/bin"
 
-link kitty .config/
-link lvim .config/
-link neofetch .config/
+link "kitty" ".config/kitty"
+link "lvim" ".config/lvim"
+link "neofetch" ".config/neofetch"
 
-link hammerspoon .hammerspoon
+link "local/.ssh/config" ".ssh/config"
+
+link "hammerspoon" ".hammerspoon"
