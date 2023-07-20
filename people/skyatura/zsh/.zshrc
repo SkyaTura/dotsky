@@ -72,6 +72,7 @@ alias zshrc="v ~/.zshrc"
 alias zshrcl="v ~/.local/.zshrc"
 alias ohmyzsh="v ~/.oh-my-zsh"
 
+alias ls="lsd"
 alias l="ls -lah"
 
 alias icat="kitty +kitten icat"

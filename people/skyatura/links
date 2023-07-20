@@ -1,5 +1,3 @@
-linkwild ".k_sessions" "k_sessions" "local/k_sessions"
-
 link "zsh/.bashrc" ".bashrc"
 link "zsh/.zshrc" ".zshrc"
 link "zsh/.zshenv" ".zshenv"

@@ -1,8 +1,5 @@
 #!/usr/bin/env zsh
 
-mkdir -p ~/.k_sessions
-cd ~/.k_sessions
-
 function setTabTitle() {
   kitty @ set-tab-title --match "$1" $2
 }
@@ -21,16 +18,8 @@ function focus() {
   kitty @ focus-window --match "num:$1"
 }
 
-session=$(fzf --reverse --prompt="Select a session > ")
+session=$(find "$DOTSKY_PROFILE_DIR/k_sessions" "$DOTSKY_PROFILE_LOCAL/k_sessions" -type f | fzf --delimiter / --with-nth -1 --preview "echo {}" --preview-window up:1 --reverse --prompt "Select a session > ")
 
 if [[ -f "$session" ]]; then
   source "$session"
-else
-  echo "Input a one-time run command: "
-  read input
-  if [[ "$input" == "" ]]; then
-    echo "Cancelled"
-  else
-    zsh -i -c "$input"
-  fi
 fi

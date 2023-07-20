@@ -1,0 +1,4 @@
+launch "~/projects/github/SkyaTura/aoc" "AoC" "tab" "lvim"
+launch "~/projects/github/SkyaTura/aoc" "AoC" "window" ""
+resize 20
+focus 0
