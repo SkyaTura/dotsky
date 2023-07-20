@@ -1,12 +1,11 @@
-const shell = (shellScript) => runShellScript({
+const shell = (shellScript, parameters = '-c', launchPath = '/bin/zsh') => runShellScript({
   script: shellScript, // mandatory
-  launchPath: '/bin/bash', //optional - default is /bin/bash
-  parameters: '-c', // optional - default is -c
+  launchPath, //optional - default is /bin/bash
+  parameters, // optional - default is -c
   environmentVariables: '', //optional e.g. VAR1=/test/;VAR2=/test2/;
 })
 
-const binLocal = (command) => shell(`/Users/skyatura/.local/bin/${command}`)
-const blade = (args) => binLocal(`sbar-blades ${args}`)
+const blade = (args) => shell(`sbar-blades ${args}`)
 const say = (msg) => shell(`say ${msg}`)
 
 const loadClock = () => {
@@ -35,6 +34,28 @@ const loadIps = () => {
       .map(v => v.trim())
       .filter(Boolean)
       .join(`\n`)
+    setText(list)
+  }
+  ip.addEventListener('click', () => {
+    tick()
+    blade('copyIp')
+  })
+  setInterval(tick, 300_000)
+  tick()
+
+  console.log('ips loaded')
+}
+
+const loadHosts = () => {
+  const hosts = document.body.querySelector('#hosts')
+  const setText = (innerText) => Object.assign(hosts, {innerText})
+  const tick = async () => {
+    const allynna = await shell("getent hosts allynna | grep -E '\\sallynna' | awk '{ print $1 }'", '-i -c')
+    const garfield = await shell("getent hosts garfield | grep -E '\\sgarfield' | awk '{ print $1 }'", '-i -c')
+    const list = [
+      `Allynna: ${allynna.trim().startsWith('10.10') ? 'VPN' : 'Lan' }`,
+      `Garfield: ${garfield.startsWith('10.10') ? 'VPN' : 'Lan' }`,
+    ].join(`\n`)
     setText(list)
   }
   ip.addEventListener('click', () => {
@@ -90,6 +111,7 @@ const main = () => setTimeout(() => {
   loadClock()
   loadBattery()
   loadIps()
+  loadHosts()
 }, 200)
 
 

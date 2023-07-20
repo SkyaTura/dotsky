@@ -1,0 +1,73 @@
+#!/usr/bin/env zsh
+
+export MODE="${1:-link}"
+link_script="$DOTSKY_PROFILE_DIR/links"
+
+if [[ ! -d "$DOTSKY_DIR" ]]; then
+  printc yellow "You must clone dotsky into '$DOTSKY_DIR' or override this path with the env variable DOTSKY_DIR"
+  exit 1
+elif [[ ! -d "$DOTSKY_PROFILE_DIR" ]]; then
+  printc red "No settings was found for your profile!"
+  printc yellow "You may fix this by matching your profile dir with your username ($(whoami)) or overriding the variable DOTSKY_PROFILE_DIR"
+  exit 1
+elif [[ ! -d "$DOTSKY_COMMON" ]]; then
+  printc red "Common files not found"
+  exit 1
+elif [[ ! -f "$link_script" ]]; then
+  printc red "Your profile doesn't have a linking method"
+  exit 1
+fi
+if [[ "$MODE" == "relink" ]]; then
+  link-profile unlink && \
+  link-profile link
+  exit
+fi
+
+function link() {
+  cd "$HOME"
+
+  source="$DOTSKY_PROFILE_DIR/$1" 
+  target="$HOME/$2" 
+  if [[ "$MODE" == "unlink" ]]; then
+    if [[ -L "$target" ]]; then
+      rm "$target" \
+        && print -P "%F{green}$source -> $target unlinked%f" \
+        || print -P "%F{red}$source -> $target link deletion failed%f"
+    elif [[ -f "$target" || -d "$target" ]]; then
+      print -P "%F{red}$source -> $target exists but is not a link! skipping...%f"
+    else
+      print -P "%F{yellow}$source -> $target already unlinked%f"
+    fi
+  elif [[ -L "$target" ]]; then
+    print -P "%F{yellow}$source -> $target already linked%f"
+  elif [[ -f "$target" || -d "$target" ]]; then
+    print -P "%F{red}$source -> $target please remove the original file before linking%f"
+  else
+    target_dir="$(dirname $target)"
+    if [[ ! -d "$target_dir" ]]; then
+      mkdir -p "$target_dir" \
+        && print -P "%F{green}$target_dir basedir to target created%f" \
+        || print -P "%F{red}$target_dir failed to create basedir to target%f"
+      return
+    fi
+    ln -s "$source" "$target" \
+      && print -P "%F{green}$source -> $target linked%f" \
+      || print -P "%F{red}$source -> $target link failed%f"
+  fi
+}
+function linkwild() {
+  cd "$DOTSKY_PROFILE_DIR"
+
+  function linkw() {
+    target=$(basename "$2")
+    link "$2" "$1/$target"
+  }
+  export _link="$(which linkw); $(which link)"
+
+  destination="$1"
+  shift
+
+  find $@ -type f -exec zsh -c "$_link; linkw '$destination' '{}'" \;
+}
+
+source "$link_script"

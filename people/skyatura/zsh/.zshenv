@@ -1,3 +1,6 @@
+# Load dotsky
+source "$HOME/dotsky/env"
+
 # Language environment
 export LANG="pt_BR.UTF-8"
 export LC_COLLATE="pt_BR.UTF-8"

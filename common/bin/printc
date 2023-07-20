@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+color="$1"
+shift
+print -P "%F{$color}$@%f"

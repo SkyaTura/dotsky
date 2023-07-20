@@ -72,6 +72,7 @@ alias zshrc="v ~/.zshrc"
 alias zshrcl="v ~/.local/.zshrc"
 alias ohmyzsh="v ~/.oh-my-zsh"
 
+alias ls="lsd"
 alias l="ls -lah"
 
 alias icat="kitty +kitten icat"
@@ -92,7 +93,6 @@ alias nrd='npm run dev'
 alias nrb='npm run build'
 alias nrs='npm start'
 alias nrt='npm run test'
-alias dotsky='cd ~/dotsky/people/skyatura'
 
 gac() {
   git add $@
