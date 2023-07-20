@@ -1,12 +1,11 @@
 const shell = (shellScript) => runShellScript({
   script: shellScript, // mandatory
-  launchPath: '/bin/bash', //optional - default is /bin/bash
+  launchPath: '/bin/zsh', //optional - default is /bin/bash
   parameters: '-c', // optional - default is -c
   environmentVariables: '', //optional e.g. VAR1=/test/;VAR2=/test2/;
 })
 
-const binLocal = (command) => shell(`/Users/skyatura/.local/bin/${command}`)
-const blade = (args) => binLocal(`sbar-blades ${args}`)
+const blade = (args) => shell(`sbar-blades ${args}`)
 const say = (msg) => shell(`say ${msg}`)
 
 const loadClock = () => {

@@ -1,0 +1,15 @@
+linkwild ".k_sessions" "k_sessions" "local/k_sessions"
+
+link "zsh/.bashrc" ".bashrc"
+link "zsh/.zshrc" ".zshrc"
+link "zsh/.zshenv" ".zshenv"
+link "zsh/.zprofile" ".zprofile"
+link "local/zsh/.zshrc" ".local/.zshrc"
+
+link "kitty" ".config/kitty"
+link "lvim" ".config/lvim"
+link "neofetch" ".config/neofetch"
+
+link "local/.ssh/config" ".ssh/config"
+
+link "hammerspoon" ".hammerspoon"
