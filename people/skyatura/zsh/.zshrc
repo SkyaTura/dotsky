@@ -92,7 +92,6 @@ alias nrd='npm run dev'
 alias nrb='npm run build'
 alias nrs='npm start'
 alias nrt='npm run test'
-alias dotsky='cd ~/dotsky/people/skyatura'
 
 gac() {
   git add $@
