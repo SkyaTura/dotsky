@@ -1,0 +1,36 @@
+#!/usr/bin/env zsh
+
+mkdir -p ~/.k_sessions
+cd ~/.k_sessions
+
+function setTabTitle() {
+  kitty @ set-tab-title --match "$1" $2
+}
+function launch() {
+  id=$(kitty @ launch --hold --type=$3 --cwd="$1" zsh -c "$4")
+  if [[ $3 == "tab" ]]; then
+    setTabTitle "id:$id" "$2"
+  fi
+}
+
+function resize() {
+  kitty @ resize-window --axis vertical --increment $(kitty @ ls | jq ".[] | select(.is_active == true).tabs | .[] | select(.is_active == true).windows | .[] | $1 - select(.is_active == true).lines")
+}
+
+function focus() {
+  kitty @ focus-window --match "num:$1"
+}
+
+session=$(fzf --reverse --prompt="Select a session > ")
+
+if [[ -f "$session" ]]; then
+  source "$session"
+else
+  echo "Input a one-time run command: "
+  read input
+  if [[ "$input" == "" ]]; then
+    echo "Cancelled"
+  else
+    zsh -i -c "$input"
+  fi
+fi

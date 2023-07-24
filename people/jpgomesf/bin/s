@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+function ssh() {
+  kitty +kitten ssh $@
+}
+
+if [[ -z $1 ]]; then
+  host=$(ssh-select-host)
+  if [[ -z $host ]]; then
+    exit
+  fi
+  ssh $host
+else
+  ssh $@
+fi
