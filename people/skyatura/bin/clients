@@ -1,0 +1,198 @@
+[
+  {
+    "name": "homolog-api-restaurante-bradesco-emiolo",
+    "resourceGroup": "client-bradesco-restaurante"
+  },
+  {
+    "name": "api-poc-bdmg-emiolo",
+    "resourceGroup": "client-bmdg"
+  },
+  {
+    "name": "cartorio-emiolo",
+    "resourceGroup": "client-cartorio-denis"
+  },
+  {
+    "name": "grupod20-wordpress-emiolo",
+    "resourceGroup": "client-grupo-d20"
+  },
+  {
+    "name": "api-jjobs-emiolo",
+    "resourceGroup": "client-jjobs"
+  },
+  {
+    "name": "ortofarma-wordpress-emiolo",
+    "resourceGroup": "client-ortofarma"
+  },
+  {
+    "name": "homolog-orders-restaurante-bradesco-emiolo",
+    "resourceGroup": "client-bradesco-restaurante"
+  },
+  {
+    "name": "homolog-ert-emiolo",
+    "resourceGroup": "client-ert"
+  },
+  {
+    "name": "addcon-wordpress-emiolo",
+    "resourceGroup": "client-addcon"
+  },
+  {
+    "name": "api-financeiro-almais-emiolo",
+    "resourceGroup": "client-almais"
+  },
+  {
+    "name": "api-whus-pd-emiolo",
+    "resourceGroup": "client-whus"
+  },
+  {
+    "name": "alambari-emiolo",
+    "resourceGroup": "client-alambari"
+  },
+  {
+    "name": "markenfassi-emiolo",
+    "resourceGroup": "client-marken-fassi"
+  },
+  {
+    "name": "emiolo-aes-api",
+    "resourceGroup": "client-aes"
+  },
+  {
+    "name": "api-celere-emiolo",
+    "resourceGroup": "client-celere"
+  },
+  {
+    "name": "torp-wordpress-emiolo",
+    "resourceGroup": "client-torp"
+  },
+  {
+    "name": "api-whus-emiolo",
+    "resourceGroup": "client-whus"
+  },
+  {
+    "name": "api-cimcal-emiolo",
+    "resourceGroup": "client-cimcal"
+  },
+  {
+    "name": "api-cn10-emiolo",
+    "resourceGroup": "client-curso-n10"
+  },
+  {
+    "name": "marken-fassi-emiolo",
+    "resourceGroup": "client-marken-fassi"
+  },
+  {
+    "name": "api-libbs-emiolo",
+    "resourceGroup": "client-libbs"
+  },
+  {
+    "name": "api-oruby-emiolo",
+    "resourceGroup": "client-oruby"
+  },
+  {
+    "name": "ortofarma-wordpress-emiolo-dev",
+    "resourceGroup": "client-ortofarma"
+  },
+  {
+    "name": "sitemap-oruby-emiolo",
+    "resourceGroup": "client-oruby"
+  },
+  {
+    "name": "api-patricia-meirelles-emiolo",
+    "resourceGroup": "client-patricia-meirelles"
+  },
+  {
+    "name": "deltadistribuidora-emiolo",
+    "resourceGroup": "client-delta-distribuidora"
+  },
+  {
+    "name": "cominex-emiolo",
+    "resourceGroup": "client-cominex"
+  },
+  {
+    "name": "evandro-ribeiro-emiolo",
+    "resourceGroup": "client-evandro-ribeiro"
+  },
+  {
+    "name": "api-orbita-siemens-emiolo",
+    "resourceGroup": "client-siemens"
+  },
+  {
+    "name": "api-oruby-log",
+    "resourceGroup": "client-oruby"
+  },
+  {
+    "name": "engepremo-wordpress-emiolo",
+    "resourceGroup": "client-engepremo"
+  },
+  {
+    "name": "cadmiel-emiolo",
+    "resourceGroup": "client-cadmiel"
+  },
+  {
+    "name": "patricia-meirelles-wordpress-emiolo",
+    "resourceGroup": "client-patricia-meirelles"
+  },
+  {
+    "name": "api-restaurante-bradesco-emiolo",
+    "resourceGroup": "client-bradesco-restaurante"
+  },
+  {
+    "name": "tia-aurea-emiolo",
+    "resourceGroup": "client-tia-aurea"
+  },
+  {
+    "name": "site-cimcal-emiolo",
+    "resourceGroup": "client-cimcal"
+  },
+  {
+    "name": "orders-restaurante-bradesco-emiolo",
+    "resourceGroup": "client-bradesco-restaurante"
+  },
+  {
+    "name": "biokratos-wordpress-emiolo",
+    "resourceGroup": "client-biokratos"
+  },
+  {
+    "name": "admin-terrabike-emiolo",
+    "resourceGroup": "client-terrabike"
+  },
+  {
+    "name": "ert-emiolo",
+    "resourceGroup": "client-ert"
+  },
+  {
+    "name": "almais-v2-wordpress-emiolo",
+    "resourceGroup": "client-almais"
+  },
+  {
+    "name": "patchwork-show-emiolo",
+    "resourceGroup": "client-patchwork-show"
+  },
+  {
+    "name": "api-qr-by-fiapo-emiolo",
+    "resourceGroup": "client-by-fiapo"
+  },
+  {
+    "name": "caneal-emiolo",
+    "resourceGroup": "client-caneal"
+  },
+  {
+    "name": "api-pdca-libbs-emiolo",
+    "resourceGroup": "client-libbs-pdca"
+  },
+  {
+    "name": "waldorf-emiolo",
+    "resourceGroup": "client-emiolo"
+  },
+  {
+    "name": "curso-n10-emiolo",
+    "resourceGroup": "client-curso-n10"
+  },
+  {
+    "name": "api-jbs-emiolo",
+    "resourceGroup": "client-jbs"
+  },
+  {
+    "name": "api-jbs-homolog-emiolo",
+    "resourceGroup": "client-jbs"
+  }
+]

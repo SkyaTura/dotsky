@@ -3,18 +3,53 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
+vim.opt.relativenumber = true -- relative line numbers
+vim.opt.clipboard = ""
+vim.opt.showcmd = true
+
+lvim.leader = "\\"
+lvim.format_on_save.enabled = true
+
+require('wk')           -- Key Mapping Helper
 require('aesthetics')   -- Dashboard, NeoTree
 require('lsp-settings') -- Eslint, Diagnostics
 
+WK_register_leader("Lc", { "<cmd>vsplit ~/.config/lvim/config.lua<cr>", "Edit config.lua" })
 
 -- LSP Settings
 
-lvim.builtin.which_key.mappings["\\"] = {
-  name = "Deeper leader",
-}
-lvim.builtin.which_key.mappings["\\"]["\\"] = { "<cmd>w<cr>", "Save file" }
+WK_register_leader("<leader>", { name = "Deeper <leader>" })
+WK_register_dleader("<leader>", { "<cmd>w<cr>", "Save file" })
+lvim.builtin.which_key.mappings.W = lvim.builtin.which_key.mappings.w
+lvim.builtin.which_key.mappings.w = { function()
+  vim.cmd('w')
+  vim.lsp.buf.format()
+end, "Save file (format)" }
 
-
+table.insert(lvim.plugins, {
+  "sudoerwx/vim-ray-so-beautiful",
+  config = function()
+    vim.g.ray_options = {
+      theme = 'breeze',
+      background = 'true',
+      darkMode = 'true',
+      padding = '16',
+      language = 'auto',
+    }
+  end
+})
+WK_register_leader("y", {
+  name = "Yanke",
+  p = { '"+p', "Paste from Clipboard" },
+})
+WK_register_leader("y", {
+  name = "Yanke",
+  mode = "v",
+  y = { '"+y', "Copy selection to Clipboard" },
+  Y = { '"+Y', "Copy lines to Clipboard" },
+  p = { '"+p', "Paste from Clipboard" },
+  c = { "<cmd>'<,'>Ray<cr>", "Send selection to Ray.io" },
+})
 
 table.insert(lvim.plugins, {
   "windwp/nvim-spectre",
@@ -220,7 +255,7 @@ table.insert(lvim.plugins, {
     require('symbols-outline').setup()
   end
 })
-lvim.builtin.which_key.mappings["S"] = { "<cmd>SymbolsOutline<CR>", "Toggle SymbolsOutline" }
+WK_register_leader("S", { "<cmd>SymbolsOutline<CR>", "Toggle SymbolsOutline" })
 
 table.insert(lvim.plugins, {
   "folke/todo-comments.nvim",
@@ -247,7 +282,7 @@ table.insert(lvim.plugins, {
     "ThePrimeagen/harpoon"
   },
 })
-lvim.builtin.which_key.mappings["\\"]["p"] = {
+WK_register_dleader("p", {
   name = "Portal",
   p = { "<cmd>Portal jumplist backward<cr>", "Jumplist backward" },
   P = { "<cmd>Portal jumplist forward<cr>", "Jumplist forward" },
@@ -259,7 +294,7 @@ lvim.builtin.which_key.mappings["\\"]["p"] = {
   H = { "<cmd>Portal harpoon forward<cr>", "Harpoon forward" },
   g = { "<cmd>Portal grapple backward<cr>", "Grapple backward" },
   G = { "<cmd>Portal grapple forward<cr>", "Grapple forward" },
-}
+})
 
 -- table.insert(lvim.plugins, {
 --   "thibthib18/mongo-nvim",
@@ -285,12 +320,12 @@ table.insert(lvim.plugins, {
     })
   end
 })
-lvim.builtin.which_key.mappings["\\"]["h"] = {
+WK_register_dleader("h", {
   name = "HTTP",
   h = { "<Plug>RestNvim", "Run" },
   p = { "<Plug>RestNvimPreview", "Preview" },
   l = { "<Plug>RestNvimLast", "Re-run last" },
-}
+})
 
 table.insert(lvim.plugins, {
   "knubie/vim-kitty-navigator",
@@ -319,19 +354,4 @@ lvim.builtin.telescope.on_config_done = function(telescope)
   pcall(telescope.load_extension, "gitmoji")
 end
 
-vim.opt.relativenumber = true -- relative line numbers
-vim.opt.clipboard = ""
-
-lvim.leader = "\\"
-lvim.format_on_save.enabled = true
-
-lvim.builtin.which_key.mappings["L"]["c"] = { "<cmd>vsplit ~/.config/lvim/config.lua<cr>", "Edit config.lua" }
-
-vim.opt.showcmd = true
-
-lvim.format_on_save.enabled = true
-
 require("rust")
-
-lvim.builtin.which_key.mappings["H"] = { "iospijadoipsjfioasdjfo asopidfjasodifjoi\nhello Mundo0ciwFookf x~0~ysiw[",
-  "Edit config.lua" }

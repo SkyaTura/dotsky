@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #app {
+  --bar-height: 100vh;
+  height: var(--bar-height) !important;
+  max-height: var(--bar-height) !important;
+  overflow: hidden;
+}
+
+html {
+  pointer-events: painted;
+  background: transparent;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: CaskaydiaCove Nerd Font, FiraCode Nerd Font, Fira Code, sans-serif;
+  font-size: 12px;
+  position: relative;
+}
+
+body::before, body::after {
+  background: black;
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: var(--bar-height);
+  max-height: var(--bar-height);
+  width: 100%;
+}
+
+body::before {
+  z-index: -2;
+}
+
+body::after {
+  background-image: url(./bg.png);
+  background-size: 100%;
+  background-position-y: 0px;
+  z-index: -1;
+  opacity: 65%;
+  filter: contrast(105%);
+}
+
+.hack-icon {
+  font-family: Hack Nerd Font;
+}
+

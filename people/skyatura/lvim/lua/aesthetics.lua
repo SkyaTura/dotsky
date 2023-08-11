@@ -1,3 +1,5 @@
+require("wk")
+
 -- Dashboard
 lvim.builtin.alpha.dashboard.section.header.val = {
   [[  ______     __  __     __  __     ______        ]],
@@ -97,9 +99,9 @@ table.insert(lvim.plugins, {
     })
   end
 })
-lvim.builtin.nvimtree.active = false -- NOTE: prevent nvimtree to be used
-lvim.builtin.which_key.mappings["g"]["m"] = { "<cmd>Telescope gitmoji<CR>", "Commit with gitmoji" }
-lvim.builtin.which_key.mappings["e"] = {
+lvim.builtin.nvimtree.active = false     -- NOTE: prevent nvimtree to be used
+WK_register("g", { m = { "<cmd>Telescope gitmoji<CR>", "Commit with gitmoji" } })
+lvim.builtin.which_key.mappings["e"] = { -- NOTE: overwriting mappings can't be done with wk_register
   name = "NeoTree",
   e = { "<cmd>NeoTreeRevealToggle<CR>", "Toggle FileSystem" },
   f = { "<cmd>NeoTreeFloat filesystem<CR>", "Explore FileSystem" },

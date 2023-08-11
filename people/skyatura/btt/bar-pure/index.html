@@ -14,15 +14,43 @@
         <button id="me" ondblclick="window.location.reload()"></button>
         <button id="clock"></button>
         <button id="battery"></button>
+        <div class="spacer"></div>
+        <button id="hass_social">
+          <span class="hack-icon off">󰃞</span>
+          <span class="hack-icon mode">󰃟</span>
+          <span class="hack-icon zone">󰃠</span>
+        </button>
       </div>
+      <div id="notch"></div>
       <div class="wing wing-right">
-        <button id="ip"></button>
-        <button id="hosts"></button>
+        <div class="wing-group">
+          <button id="hosts"></button>
+          <button id="ip"></button>
+        </div>
+        <button id="activeApp"></button>
+        <div class="spacer"></div>
+        <button id="nowPlaying">
+          <div id="nowPlaying_status">
+            <div class="playing">▶︎</div>
+            <div class="paused">▩</div>
+            <div class="cover"></div>
+          </div>
+          <div id="nowPlaying_texts">
+            <div class="title"></div>
+            <div class="album"></div>
+            <div class="artist"></div>
+          </div>
+        </button>
       </div>
     </div>
   </div>
 
   <script type="text/javascript" src="./index.js"></script>
 </body>
+<script type="text/javascript">
+  function BTTNotification(...args) {
+    return window.SKB.BTTNotification(...args)
+  }
+</script>
 
 </html>
