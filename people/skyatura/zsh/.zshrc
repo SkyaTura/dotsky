@@ -48,13 +48,16 @@ function node_info() {
   echo " 📦($version)"
 }
 NEWLINE=$'\n'
+
 PROMPT='${NEWLINE}%B'
-PROMPT+='%F{#888}$(date "+%H:%M:%S")'
-PROMPT+=' %F{#0F0}$USER%F{#FF0}@%m'
-PROMPT+='%F{#090}$(node_info)'
-PROMPT+='%F{#0AA}$(docker_info)'
-PROMPT+=' $(git_prompt_info)'
-PROMPT+='${NEWLINE}$b'
+if [[ "$ASCIINEMA_REC" != "1" ]]; then
+  PROMPT+='%F{#888}$(date "+%H:%M:%S")'
+  PROMPT+=' %F{#0F0}$USER%F{#FF0}@%m'
+  PROMPT+='%F{#090}$(node_info)'
+  PROMPT+='%F{#0AA}$(docker_info)'
+  PROMPT+=' $(git_prompt_info)'
+  PROMPT+='${NEWLINE}$b'
+fi
 PROMPT+='%F{cyan}%c %B%(?:%F{green}➜ :%F{red}➜ )%b%f '
 
 # User configuration
@@ -103,3 +106,10 @@ gac() {
 mkdir -p ~/.local
 touch ~/.local/.zshrc ~/.motd
 source ~/.local/.zshrc
+
+# bun completions
+[ -s "/Users/skyatura/.bun/_bun" ] && source "/Users/skyatura/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

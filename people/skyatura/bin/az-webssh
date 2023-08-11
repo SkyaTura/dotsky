@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+function fetchClients() {
+  # az webapp list --query "[].{resourceGroup: resourceGroup, name: name}"
+  cat ./clients
+}
+
+echo "Fetching webapps..."
+
+projection='.[] | "\(.resourceGroup) > \(.name)"'
+items=$(fetchClients | jq -r "$projection" | sort)
+selected_resource=$(printf "%s\n" ${items[@]} | fzf --reverse --prompt="Select a server > ")
+
+if [[ "$selected_resource" == "" ]]; then
+  echo "No resource selected"
+  exit 1
+fi
+
+echo "Connecting to '$selected_resource'..."
+selected_object=$(echo "$items" | jq --arg selected "$items" "select($projection == \$selected)")
+
+echo "$selected_object"
+

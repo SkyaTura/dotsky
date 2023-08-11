@@ -1,5 +1,7 @@
+require('which-key') -- Key Mapping Helper
+
 -- Convenience mappings
-lvim.builtin.which_key.mappings["l"]["R"] = { "<cmd>LspRestart<cr>", "Restart" }
+WK_register_leader("l", { R = { "<cmd>LspRestart<cr>", "Restart" } })
 
 -- Setup
 local formatters = require "lvim.lsp.null-ls.formatters"
@@ -39,7 +41,7 @@ end
 vim.cmd [[autocmd CursorHold * lua _G.diagnostics_handler()]]
 
 
-lvim.builtin.which_key.mappings["t"] = {
+WK_register_leader("t", {
   name = "Diagnostics",
   t = { "<cmd>TroubleToggle<cr>", "trouble" },
   w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace" },
@@ -49,4 +51,7 @@ lvim.builtin.which_key.mappings["t"] = {
   r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
   T = { "<cmd>lua _G.toggle_diagnostics_virtual_text()<CR>", "Toggle popup/inline errors" },
   n = lvim.builtin.which_key.mappings["l"]["j"],
-}
+})
+
+lvim.builtin.which_key.mappings.l.F = lvim.builtin.which_key.mappings.l.f
+lvim.builtin.which_key.mappings.l.f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format buffer" }
