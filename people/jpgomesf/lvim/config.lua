@@ -3,7 +3,7 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
-require('aesthetics')   -- Dashboard, NeoTree
+require('aesthetics') -- Dashboard, NeoTree
 require('lsp-settings')
 
 require 'lspconfig'.eslint.setup({
@@ -331,7 +331,7 @@ end
 vim.opt.relativenumber = true -- relative line numbers
 vim.opt.clipboard = ""
 
-lvim.leader = " "
+lvim.leader = "\\"
 
 lvim.builtin.which_key.mappings["L"]["c"] = { "<cmd>vsplit ~/.config/lvim/config.lua<cr>", "Edit config.lua" }
 
