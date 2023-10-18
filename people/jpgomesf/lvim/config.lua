@@ -48,6 +48,19 @@ table.insert(lvim.plugins, {
 })
 
 table.insert(lvim.plugins, {
+  "sudoerwx/vim-ray-so-beautiful",
+  config = function()
+    vim.g.ray_options = {
+      theme = 'breeze',
+      background = 'true',
+      darkMode = 'true',
+      padding = '16',
+      language = 'auto',
+    }
+  end
+})
+
+table.insert(lvim.plugins, {
   "RishabhRD/nvim-cheat.sh",
   dependencies = { "RishabhRD/popfix" },
 })
